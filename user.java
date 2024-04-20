@@ -1,44 +1,68 @@
-import java.util.*;
+// Define a class to represent a media item
+class MediaItem {
+    private String title;
+    private String genre;
+    private double duration;
 
-// Interface representing a user of the streaming website
-interface WebsiteUser {
-    String getName();
-    String getType();
+    public MediaItem(String title, String genre, double duration) {
+        this.title = title;
+        this.genre = genre;
+        this.duration = duration;
+    }
+
+    // Getters for title, genre, and duration
+    public String getTitle() {
+        return title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public double getDuration() {
+        return duration;
+    }
 }
 
-// Define a class to represent a subscriber of the streaming website
-class Subscriber implements WebsiteUser {
-    private String name;
-    private Map<String, MediaItem> watchedItems;
-    private Map<String, MediaItem> favoriteItems;
+// Main class for the streaming website management system
+public class StreamingSite {
+    public static void main(String[] args) {
+        // Create media items
+        MediaItem movie1 = new MediaItem("The Matrix", "Action", 120.0);
+        MediaItem movie2 = new MediaItem("Inception", "Science Fiction", 150.0);
+        MediaItem series1 = new MediaItem("Stranger Things", "Science Fiction", 45.0);
+        MediaItem series2 = new MediaItem("Breaking Bad", "Drama", 60.0);
 
-    public Subscriber(String name) {
-        this.name = name;
-        this.watchedItems = new HashMap<>();
-        this.favoriteItems = new HashMap<>();
-    }
+        // Create a subscriber
+        Subscriber subscriber = new Subscriber("Alice");
 
-    // Getters for name and type (implements from WebsiteUser interface)
-    public String getName() {
-        return name;
-    }
+        // Subscriber watches media
+        subscriber.watchMedia("M1", movie1);
+        subscriber.watchMedia("S1", series1);
 
-    public String getType() {
-        return "Subscriber";
-    }
+        // Subscriber adds media to favorites
+        subscriber.addFavorite("M1", movie1);
+        subscriber.addFavorite("S1", series1);
 
-    // Add media item to watched list
-    public void watchMedia(String mediaId, MediaItem media) {
-        watchedItems.put(mediaId, media);
-    }
+        // Display watched media
+        System.out.println(subscriber.getName() + "'s watched media:");
+        for (MediaItem media : subscriber.watchedItems.values()) {
+            System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
+        }
 
-    // Add media item to favorites
-    public void addFavorite(String mediaId, MediaItem media) {
-        favoriteItems.put(mediaId, media);
-    }
+        // Display favorite media
+        System.out.println("\n" + subscriber.getName() + "'s favorite media:");
+        for (MediaItem media : subscriber.favoriteItems.values()) {
+            System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
+        }
 
-    // Remove media item from favorites
-    public void removeFavorite(String mediaId) {
-        favoriteItems.remove(mediaId);
+        // Subscriber removes media from favorites
+        subscriber.removeFavorite("M1");
+
+        // Display updated favorite media
+        System.out.println("\n" + subscriber.getName() + "'s favorite media after removal:");
+        for (MediaItem media : subscriber.favoriteItems.values()) {
+            System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
+        }
     }
 }
