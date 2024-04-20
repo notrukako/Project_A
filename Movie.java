@@ -3,8 +3,8 @@ public class Movie extends Video {
     private double duration;
     private String director;
 
-    public Movie(String title, String director, String yearReleased, double duration) {
-        super(title);
+    public Movie(String title, String director, String yearReleased, double duration, boolean isWatchable) {
+        super(title, isWatchable);
         this.yearReleased = yearReleased;
         this.duration = duration;
         this.director = director;
@@ -26,5 +26,6 @@ public class Movie extends Video {
     public void displayMetaData() {
         System.out.println("The " + getTitle() + " is Directed by " + getDirector() + ", was released in "
                 + getYearReleased() + ", and is " + getDuration() + " minutes long!");
+        System.out.println("is available? " + getIsWatchable());
     }
 }

@@ -2,7 +2,7 @@ public class Video {
     private String title;
     protected boolean isWatchable;
 
-    public Video(String title) {
+    public Video(String title, boolean isWatchable) {
         this.title = title;
         this.isWatchable = true;
     }
@@ -26,7 +26,7 @@ public class Video {
         }
     }
 
-    public void displayMovie() {
+    public void displayMetaData() {
         System.out.println("The " + title + ", is watchable?" + isWatchable);
     }
 }

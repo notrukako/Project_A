@@ -13,8 +13,8 @@ public class Anime extends Video {
     private double episodes;
     private String studio;
 
-    public Anime(String title, genre genre, double seansons, double episodes, String studio) {
-        super(title);
+    public Anime(String title, genre genre, double seansons, double episodes, String studio, boolean isWatchable) {
+        super(title, isWatchable);
         this.genre = genre;
         this.seasons = seansons;
         this.episodes = episodes;
@@ -43,5 +43,6 @@ public class Anime extends Video {
         System.out.println("Genre: " + getGenre());
         System.out.println("Seasons: " + getSeason() + ", Episodes: " + getEpisode());
         System.out.println("By studio " + getStudio());
+        System.out.println("Is avbailable? " + getIsWatchable());
     }
 }
