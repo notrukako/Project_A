@@ -25,10 +25,4 @@ public class StreamingSite {
         subscriber.addFavorite("A1", anime1);
         subscriber.addFavorite("P1", podcast1);
 
-        public void displayMetaData() {
-        if (isWatchable = true) {
-            System.out.println("Video name: " + title + ", is watchable: Yes");
-        } else {
-            System.out.println("Video name: " + title + ", is watchable: No");
-        }
-    }
+
