@@ -24,6 +24,13 @@ public class StreamingSite {
         subscriber.addFavorite("M1", movie1);
         subscriber.addFavorite("A1", anime1);
         subscriber.addFavorite("P1", podcast1);
+        
+        // Display watched media items
+        System.out.println(subscriber.getName() + "'s watched media items:");
+        subscriber.getWatchedItems().forEach((id, media) ->
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
 
+        // Display favorite media items
+        System.out.println(subscriber.displayFavoriteItems());
     }
 }
