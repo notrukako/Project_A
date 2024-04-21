@@ -106,7 +106,7 @@ class Subscriber implements WebsiteUser {
 }
 
 // Main class for the streaming website management system
-public class StreamingSite {
+public class user {
     public static void main(String[] args) {
         // Create media items
         MediaItem movie1 = new Media("The Matrix", "Action", 120.0, MediaType.MOVIE);
@@ -135,12 +135,12 @@ public class StreamingSite {
         // Display watched media items
         System.out.println(subscriber.getName() + "'s watched media items:");
         subscriber.getWatchedItems().forEach((id, media) ->
-                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getType() + "), Duration: " + media.getDuration() + " minutes"));
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
 
         // Display favorite media items
         System.out.println("\n" + subscriber.getName() + "'s favorite media items:");
         subscriber.getFavoriteItems().forEach((id, media) ->
-                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getType() + "), Duration: " + media.getDuration() + " minutes"));
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
 
         // Subscriber removes media item from favorites
         subscriber.removeFavorite("M1");
@@ -148,6 +148,6 @@ public class StreamingSite {
         // Display updated favorite media items
         System.out.println("\n" + subscriber.getName() + "'s favorite media items after removal:");
         subscriber.getFavoriteItems().forEach((id, media) ->
-                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getType() + "), Duration: " + media.getDuration() + " minutes"));
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
     }
 }
