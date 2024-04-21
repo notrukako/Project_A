@@ -1,5 +1,11 @@
 import java.util.*;
 
+// Interface representing a website user
+interface WebsiteUser {
+    String getName();
+    String getType();
+}
+
 // Interface representing a media item
 interface MediaItem {
     String getTitle();
@@ -79,10 +85,20 @@ class Subscriber implements WebsiteUser {
     public void removeFavorite(String mediaId) {
         favoriteItems.remove(mediaId);
     }
+
+    // Getter for watchedItems
+    public Map<String, MediaItem> getWatchedItems() {
+        return watchedItems;
+    }
+
+    // Getter for favoriteItems
+    public Map<String, MediaItem> getFavoriteItems() {
+        return favoriteItems;
+    }
 }
 
 // Main class for the streaming website management system
-public class StreamingSite {
+public class user {
     public static void main(String[] args) {
         // Create movies
         MediaItem movie1 = new Movie("The Matrix", "Action", 120.0);
@@ -101,13 +117,13 @@ public class StreamingSite {
 
         // Display watched movies
         System.out.println(subscriber.getName() + "'s watched movies:");
-        for (MediaItem media : subscriber.watchedItems.values()) {
+        for (MediaItem media : subscriber.getWatchedItems().values()) {
             System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
         }
 
         // Display favorite movies
         System.out.println("\n" + subscriber.getName() + "'s favorite movies:");
-        for (MediaItem media : subscriber.favoriteItems.values()) {
+        for (MediaItem media : subscriber.getFavoriteItems().values()) {
             System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
         }
 
@@ -116,7 +132,7 @@ public class StreamingSite {
 
         // Display updated favorite movies
         System.out.println("\n" + subscriber.getName() + "'s favorite movies after removal:");
-        for (MediaItem media : subscriber.favoriteItems.values()) {
+        for (MediaItem media : subscriber.getFavoriteItems().values()) {
             System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
         }
     }
