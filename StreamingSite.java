@@ -7,7 +7,7 @@ public class StreamingSite {
         MediaItem anime1 = new Media("Naruto", "Shounen", 25.0, MediaType.ANIME);
         MediaItem anime2 = new Media("Attack on Titan", "Action", 30.0, MediaType.ANIME);
         MediaItem podcast1 = new Media("The Joe Rogan Experience", "Talk", 60.0, MediaType.PODCAST);
-        MediaItem podcast2 = new Media("The Tim Ferriss Show", "Self-Help", 45.0, MediaType.PODCAST);
+        MediaItem podcast2 = new Media("Close The Door", "Talk", 45.0, MediaType.PODCAST);
 
         // Create a subscriber
         Subscriber subscriber = new Subscriber("Alice");
