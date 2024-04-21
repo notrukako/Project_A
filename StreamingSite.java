@@ -25,4 +25,5 @@ public class StreamingSite {
         subscriber.addFavorite("A1", anime1);
         subscriber.addFavorite("P1", podcast1);
 
-
+    }
+}
