@@ -25,22 +25,10 @@ public class StreamingSite {
         subscriber.addFavorite("A1", anime1);
         subscriber.addFavorite("P1", podcast1);
 
-        // Display watched media items
-        System.out.println(subscriber.getName() + "'s watched media items:");
-        subscriber.getWatchedItems().forEach((id, media) ->
-                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
-
-        // Display favorite media items
-        System.out.println("\n" + subscriber.getName() + "'s favorite media items:");
-        subscriber.getFavoriteItems().forEach((id, media) ->
-                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
-
-        // Subscriber removes media item from favorites
-        subscriber.removeFavorite("M1");
-
-        // Display updated favorite media items
-        System.out.println("\n" + subscriber.getName() + "'s favorite media items after removal:");
-        subscriber.getFavoriteItems().forEach((id, media) ->
-                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getGenre() + "), Duration: " + media.getDuration() + " minutes"));
-    }
-}
+        public void displayMetaData() {
+        if (isWatchable = true) {
+            System.out.println("Video name: " + title + ", is watchable: Yes");
+        } else {
+            System.out.println("Video name: " + title + ", is watchable: No");
+        }
+    }
