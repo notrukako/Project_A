@@ -1,3 +1,4 @@
+// Import statements
 import java.util.Map;
 import java.util.HashMap;
 
@@ -17,20 +18,22 @@ interface MediaItem {
 // Enum representing different types of media
 enum MediaType {
     MOVIE,
-    SERIES,
-    DOCUMENTARY
+    ANIME,
+    PODCAST
 }
 
-// Define a class to represent a movie
-class Movie implements MediaItem {
+// Define a class to represent a media item
+class Media implements MediaItem {
     private String title;
     private String genre;
     private double duration;
+    private MediaType type;
 
-    public Movie(String title, String genre, double duration) {
+    public Media(String title, String genre, double duration, MediaType type) {
         this.title = title;
         this.genre = genre;
         this.duration = duration;
+        this.type = type;
     }
 
     @Override
@@ -46,6 +49,10 @@ class Movie implements MediaItem {
     @Override
     public double getDuration() {
         return duration;
+    }
+
+    public MediaType getType() {
+        return type;
     }
 }
 
@@ -99,42 +106,48 @@ class Subscriber implements WebsiteUser {
 }
 
 // Main class for the streaming website management system
-public class user {
+public class StreamingSite {
     public static void main(String[] args) {
-        // Create movies
-        MediaItem movie1 = new Movie("The Matrix", "Action", 120.0);
-        MediaItem movie2 = new Movie("Inception", "Science Fiction", 150.0);
+        // Create media items
+        MediaItem movie1 = new Media("The Matrix", "Action", 120.0, MediaType.MOVIE);
+        MediaItem movie2 = new Media("Inception", "Science Fiction", 150.0, MediaType.MOVIE);
+        MediaItem anime1 = new Media("Naruto", "Shounen", 25.0, MediaType.ANIME);
+        MediaItem anime2 = new Media("Attack on Titan", "Action", 30.0, MediaType.ANIME);
+        MediaItem podcast1 = new Media("The Joe Rogan Experience", "Talk", 60.0, MediaType.PODCAST);
+        MediaItem podcast2 = new Media("The Tim Ferriss Show", "Self-Help", 45.0, MediaType.PODCAST);
 
         // Create a subscriber
         Subscriber subscriber = new Subscriber("Alice");
 
-        // Subscriber watches movies
+        // Subscriber watches media items
         subscriber.watchMedia("M1", movie1);
         subscriber.watchMedia("M2", movie2);
+        subscriber.watchMedia("A1", anime1);
+        subscriber.watchMedia("A2", anime2);
+        subscriber.watchMedia("P1", podcast1);
+        subscriber.watchMedia("P2", podcast2);
 
-        // Subscriber adds movies to favorites
+        // Subscriber adds media items to favorites
         subscriber.addFavorite("M1", movie1);
-        subscriber.addFavorite("M2", movie2);
+        subscriber.addFavorite("A1", anime1);
+        subscriber.addFavorite("P1", podcast1);
 
-        // Display watched movies
-        System.out.println(subscriber.getName() + "'s watched movies:");
-        for (MediaItem media : subscriber.getWatchedItems().values()) {
-            System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
-        }
+        // Display watched media items
+        System.out.println(subscriber.getName() + "'s watched media items:");
+        subscriber.getWatchedItems().forEach((id, media) ->
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getType() + "), Duration: " + media.getDuration() + " minutes"));
 
-        // Display favorite movies
-        System.out.println("\n" + subscriber.getName() + "'s favorite movies:");
-        for (MediaItem media : subscriber.getFavoriteItems().values()) {
-            System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
-        }
+        // Display favorite media items
+        System.out.println("\n" + subscriber.getName() + "'s favorite media items:");
+        subscriber.getFavoriteItems().forEach((id, media) ->
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getType() + "), Duration: " + media.getDuration() + " minutes"));
 
-        // Subscriber removes movie from favorites
+        // Subscriber removes media item from favorites
         subscriber.removeFavorite("M1");
 
-        // Display updated favorite movies
-        System.out.println("\n" + subscriber.getName() + "'s favorite movies after removal:");
-        for (MediaItem media : subscriber.getFavoriteItems().values()) {
-            System.out.println("- " + media.getTitle() + " (" + media.getGenre() + "), Duration: " + media.getDuration() + " minutes");
-        }
+        // Display updated favorite media items
+        System.out.println("\n" + subscriber.getName() + "'s favorite media items after removal:");
+        subscriber.getFavoriteItems().forEach((id, media) ->
+                System.out.println("- " + media.getTitle() + " (" + media.getGenre() + ", " + media.getType() + "), Duration: " + media.getDuration() + " minutes"));
     }
 }
