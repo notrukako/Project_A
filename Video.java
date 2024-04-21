@@ -27,6 +27,10 @@ public class Video {
     }
 
     public void displayMetaData() {
-        System.out.println("The " + title + ", is watchable?" + isWatchable);
+        if (isWatchable = true) {
+            System.out.println("Video name: " + title + ", is watchable: Yes");
+        } else {
+            System.out.println("Video name: " + title + ", is watchable: No");
+        }
     }
 }
