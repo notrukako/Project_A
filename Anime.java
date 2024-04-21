@@ -13,10 +13,10 @@ public class Anime extends Video {
     private double episodes;
     private String studio;
 
-    public Anime(String title, genre genre, double seansons, double episodes, String studio, boolean isWatchable) {
+    public Anime(String title, genre genre, double seasons, double episodes, String studio, boolean isWatchable) {
         super(title, isWatchable);
         this.genre = genre;
-        this.seasons = seansons;
+        this.seasons = seasons;
         this.episodes = episodes;
         this.studio = studio;
     }
