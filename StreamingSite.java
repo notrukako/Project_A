@@ -1,5 +1,5 @@
 // Main class for the streaming website management system
-public class user {
+public class StreamingSite {
     public static void main(String[] args) {
         // Create media items
         MediaItem movie1 = new Media("The Matrix", "Action", 120.0, MediaType.MOVIE);
